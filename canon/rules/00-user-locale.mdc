@@ -1,0 +1,36 @@
+---
+description: Resolves user-facing chat language without a hardcoded locale: chat override, optional workspace config file, then inference from user messages, then fallback.
+alwaysApply: true
+---
+
+# User locale and terminology (canon)
+
+Policy for **which natural language** to use in user-facing prose (headings, explanations, connective text) and how **technical tokens** appear.
+
+## Resolving `userFacingLocale` (no fixed language in this repo)
+
+Apply the first rule that matches:
+
+1. **Explicit chat instruction**  
+   If the user asks for a specific language for replies (examples: “answer in English”, «ответь по-немецки»), use that for the rest of the session unless they change it again.
+
+2. **Workspace config file (per project / colleague)**  
+   If a file exists at the **workspace root** (same level as typical `.git`), read `userFacingLocale` as a **BCP 47** tag (`en`, `ru`, `de`, `uk`, …). Supported names (first match wins):
+   - `bot-manifest.locale.yaml`
+   - `bot-manifest.locale.yml`
+   - `bot-manifest.locale.json`  
+   Schema: one top-level string field `userFacingLocale`. Ignore unknown keys. If the file is malformed, skip to step 3 and mention the issue briefly if relevant.
+
+3. **Infer from the user’s messages**  
+   If steps 1–2 did not set a locale, infer the dominant natural language from the user’s **recent** messages in the current conversation when the signal is clear (vocabulary, grammar, script). If messages are too short or mixed, treat the signal as **unclear**.
+
+4. **Fallback**  
+   - If step 3 is **unclear**, ask **one** short question which language they prefer for explanations, then continue.  
+   - If asking is inappropriate (e.g. automated context), default to **`en`**.
+
+After `userFacingLocale` is known, write **connective prose** in that language. Do **not** re-derive a different locale from persona files.
+
+## Technical vocabulary
+
+- Keep **identifiers in code** and **industry-standard technical tokens** in **English** where that is the norm for the stack (API names, **CLI** flags, **HTTP** verbs, **SQL** keywords, **OWASP** categories, paths as on disk, etc.).
+- Avoid awkward literal translations of those tokens into the user-facing locale unless the user explicitly asks for localized wording.

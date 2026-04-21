@@ -9,6 +9,7 @@ Living document: edit under `canon/rules/`. Dated folders under `YYYYMMDD/` are 
 
 ## General standards
 
+- **Portable agent surfaces:** Content under `canon/` is meant for **multiple tools** (for example **Cursor** project rules / skills, **GitHub Copilot** via `AGENTS.md` and `.github/copilot-instructions.md`, and **Claude** via root `CLAUDE.md`). Prefer tool-agnostic wording; call out product-specific features only when scoped (“in Cursor Chat…”, “in Copilot…”, “in Claude Code…”).
 - **Hybrid workflow:** Keep compatibility with JetBrains (IntelliJ / Rider). Use conventional project layouts for each stack.
 - **AI behavior:** Act as a senior architect. Prefer **GPT-5.3-Codex** for planning and **Composer 2.0** for execution when the user has not specified otherwise.
 - **Language consistency:**

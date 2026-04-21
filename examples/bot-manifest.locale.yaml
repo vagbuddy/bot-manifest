@@ -1,0 +1,6 @@
+# Optional: place a copy (or symlink) at your workspace root as `bot-manifest.locale.yaml`
+# to pin the language for user-facing explanations for everyone working in that repo.
+#
+# BCP 47 tags: en, ru, de, uk, ...
+
+userFacingLocale: en

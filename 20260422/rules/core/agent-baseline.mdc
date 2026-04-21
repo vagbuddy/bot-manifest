@@ -7,8 +7,8 @@ alwaysApply: true
 
 ## Language and communication
 
-- Explain and write **user-facing** answers **in Russian** (clear, structured prose).
-- If requirements are **unclear**, ask a **short clarifying question** before guessing.
+- **Locale and term mix:** **`canon/rules/00-user-locale.mdc`**.
+- **Voice (Concise / Logical / Adaptive):** **`canon/persona/00-voice-clear.mdc`**.
 
 ## Code and design
 
