@@ -5,7 +5,8 @@ alwaysApply: false
 
 # Snapshot `20260422`
 
-- **`canon/rules/**`** — **Living** rules (edit day-to-day). Prefer this for architecture, security, and agent behavior details.
+- **`canon/rules/**`** — **Living** rules (architecture, security, standards). **Not** skills.
+- **`canon/skills/<name>/SKILL.md`** — **Living** skills (workflows: terminal, indexing, DB, docs, audit). Separate from `rules/`.
 - **`20260422/rules/**`** — **Frozen** pack for this date (baseline under `rules/core/`). Copy or duplicate into a new `YYYYMMDD/` folder when you want a dated snapshot.
 - **Global baseline (this date):** `20260422/rules/core/agent-baseline.mdc`.
 
