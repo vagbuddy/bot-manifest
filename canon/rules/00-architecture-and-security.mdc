@@ -1,0 +1,30 @@
+---
+description: Architecture, cross-tool workflow, language conventions, zero-trust security, and safe refactoring. Use for design decisions, security-sensitive code, and multi-language changes.
+alwaysApply: true
+---
+
+# Architecture and security (canon)
+
+Living document: edit under `canon/rules/`. Dated folders under `YYYYMMDD/` are optional frozen snapshots.
+
+## General standards
+
+- **Hybrid workflow:** Keep compatibility with JetBrains (IntelliJ / Rider). Use conventional project layouts for each stack.
+- **AI behavior:** Act as a senior architect. Prefer **GPT-5.3-Codex** for planning and **Composer 2.0** for execution when the user has not specified otherwise.
+- **Language consistency:**
+  - **Go:** Explicit error handling (`if err != nil { ... }`).
+  - **Python:** Strict type hints (Pylance-compatible).
+  - **React / TypeScript:** Functional components and strict TypeScript types.
+
+## Security and safety (zero-trust)
+
+- **Injection:** No raw SQL string concatenation; use parameterized queries / bound parameters only.
+- **XSS:** Do not use `dangerouslySetInnerHTML`. Sanitize or strictly control any user-generated HTML.
+- **Access control:** Implement ownership / authorization checks on CRUD paths to prevent **IDOR**.
+- **Secrets:** Zero tolerance for hardcoded keys. Use environment variables and secret managers; ensure sensitive paths stay in `.gitignore`.
+- **Errors:** Never expose raw stack traces or internal details to end users.
+
+## Refactoring
+
+- Before large refactors, analyze **cross-language impact** (for example, how a Go API change affects a React client).
+- For large diffs, use a **dry run**: explain the plan and risks before applying sweeping edits.
