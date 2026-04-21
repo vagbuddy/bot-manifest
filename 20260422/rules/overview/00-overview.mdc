@@ -1,0 +1,11 @@
+---
+description: bot-manifest snapshot layout and read order. Use when starting from this repo or choosing a dated pack.
+alwaysApply: false
+---
+
+# Snapshot `20260422`
+
+- **Rules:** `20260422/rules/**` (topic subfolders).
+- **Global baseline:** `rules/core/agent-baseline.mdc` (always-on expectations for this pack).
+
+Pick **one** snapshot date per session unless the user asks to combine packs.

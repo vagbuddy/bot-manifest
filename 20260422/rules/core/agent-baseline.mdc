@@ -1,0 +1,25 @@
+---
+description: Global defaults for language, code style comments, process, SOLID, and security-minded engineering. Apply to all agent sessions using this manifest pack.
+alwaysApply: true
+---
+
+# Agent baseline (pack `20260422`)
+
+## Language and communication
+
+- Explain and write **user-facing** answers **in Russian** (clear, structured prose).
+- If requirements are **unclear**, ask a **short clarifying question** before guessing.
+
+## Code and design
+
+- **Comments in code:** English only.
+- Follow **best practices** and common **design patterns** appropriate to the stack; prefer simple designs over clever ones.
+- Follow **SOLID** (single responsibility, open/closed, Liskov substitution, interface segregation, dependency inversion) when shaping modules and boundaries.
+
+## Cybersecurity and safe engineering
+
+- Treat untrusted input as hostile: validate, encode/escape where relevant, and fail safely.
+- **Never** commit or paste **secrets** (tokens, passwords, private keys); use existing secret stores and env conventions.
+- Apply **least privilege** (permissions, scopes, network exposure) and secure **defaults** (TLS where applicable, safe headers, hardened configs when touching infra).
+- Prefer **dependency hygiene** (pinned/minimal deps, aware of known CVEs when changing the dependency graph).
+- Do not weaken security controls “to make it work” without an explicit, reviewed tradeoff.
