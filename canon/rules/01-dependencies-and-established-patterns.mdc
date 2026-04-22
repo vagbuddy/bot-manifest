@@ -1,0 +1,19 @@
+---
+description: >-
+  Before suggesting new dependencies, verify manifests (go.mod, package.json, etc.).
+  When editing C# or Java, follow existing codebase patterns. Ask for architecture
+  confirmation on risky C# refactors (Codex-style planning).
+alwaysApply: true
+---
+
+# Dependencies and established patterns (canon)
+
+## Dependencies
+
+- **Do not invent new libraries** or versions. Open and respect **`go.mod`**, **`package.json`**, **`requirements.txt`**, and lockfiles (and stack-specific manifests such as **`*.csproj`** / **`pom.xml`** / **`build.gradle`** when present) before adding or naming packages.
+- Prefer upgrades and additions that align with what the repo already uses.
+
+## C# and Java
+
+- **Match established patterns** in the same service or module (naming, layering, DI style, async patterns, testing layout). Extend existing abstractions instead of introducing a parallel style.
+- **Large or ambiguous C# refactors:** Pause and ask the user for **architecture confirmation** (treat as a planning / “Codex mode” checkpoint) before sweeping structural edits.

@@ -1,0 +1,13 @@
+---
+description: >-
+  Go: Effective Go style, explicit if err != nil handling, go mod tidy after
+  dependency changes. Use when editing .go files or Go module layout.
+globs: "**/*.go"
+alwaysApply: false
+---
+
+# Go conventions (canon)
+
+- Follow **[Effective Go](https://go.dev/doc/effective_go)** and idioms already used in the module.
+- Use **`if err != nil { ... }`** (or equivalent explicit branches); avoid hidden or “magic” error swallowing, ignored errors, or opaque helpers that obscure control flow without team precedent.
+- When **adding or removing imports / modules**, run **`go mod tidy`** from the terminal and keep **`go.mod` / `go.sum`** consistent with the change.

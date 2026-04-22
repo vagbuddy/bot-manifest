@@ -1,0 +1,13 @@
+---
+description: >-
+  React and TypeScript: functional components and hooks only, prefer Tailwind over
+  CSS modules, centralize exported shared types. Use when editing .ts / .tsx.
+globs: "**/*.ts*"
+alwaysApply: false
+---
+
+# React and TypeScript conventions (canon)
+
+- Use **function components** and **React Hooks** only; do not add new class components.
+- Prefer **Tailwind CSS utility classes** over **CSS Modules** (or legacy ad hoc CSS files) for layout and styling unless the codebase already standardizes on CSS Modules for that area—then stay consistent locally.
+- Export **shared domain, API, and cross-feature types** from the project’s **central types entry** (commonly a `types/` directory or an agreed barrel such as `src/types/index.ts`). Avoid scattering duplicate type definitions across feature folders.

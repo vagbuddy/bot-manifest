@@ -1,0 +1,12 @@
+---
+description: >-
+  Python: Pylance-strict style type hints on all function signatures, PEP 8 with
+  120-character lines (JetBrains-style). Use when editing .py files.
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python conventions (canon)
+
+- Use **type hints on all function signatures** (parameters and return types). Aim for **Pylance strict / pyright** compatibility in new and touched code unless the file already documents a deliberate exception.
+- Follow **PEP 8**, but use a **maximum line length of 120** characters (common JetBrains default) unless the project’s formatter config overrides it—then follow that config.
