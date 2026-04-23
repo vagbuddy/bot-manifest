@@ -1,0 +1,15 @@
+---
+description: >-
+  Cross-language documentation comments: English summaries, parameters, and
+  returns using each stack's idiomatic form (docstrings, JSDoc, Go doc, etc.).
+  Apply when writing or reviewing functions, methods, and exported APIs.
+alwaysApply: true
+---
+
+# Code documentation (canon)
+
+- Use the **idiomatic documentation mechanism** for the language and ecosystem (for example **Python** docstrings, **Go** doc comments before declarations, **TypeScript/JavaScript** JSDoc or TSDoc, **Rust** `///`, **C# / F#** XML doc comments, **Java** Javadoc). Match what the codebase already standardizes on when it differs from these defaults.
+- Write documentation text in **English**, consistent with **`canon/rules/00-user-locale.mdc`** for human-facing prose in code.
+- For **exported or public** APIs and for **non-trivial** functions and methods (non-obvious behavior, side effects, invariants, or error contracts), provide a **concise summary** plus **parameters** and **return value** (or **throws** / **errors**) when types alone do not make the contract obvious.
+- Prefer **not** duplicating types verbatim when the type system already encodes them; focus on intent, edge cases, and failure modes.
+- **Trivial** one-line helpers whose names and signatures are fully self-explanatory may omit a long form; prefer documenting where a reader would otherwise guess wrong.
