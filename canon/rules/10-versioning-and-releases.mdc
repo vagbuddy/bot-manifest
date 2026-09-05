@@ -22,7 +22,14 @@ Keep 1:1 character-level identity across all layers so no runtime or CI/CD norma
 - **Application manifests:** `package.json`, `pyproject.toml`, `Cargo.toml`, etc. (`1.0.2`)
 - **Deployment & runtime env:** `APP_VERSION=1.0.2`
 
+## Exception: Go Modules (`go get`)
+
+- **Mandatory `v` prefix for Go:** The Go toolchain (`go get`, `go.mod`, Semantic Import Versioning) strictly requires Git release tags to start with `v` (e.g., `v1.0.0`, `v0.2.1`).
+- For Go modules, packages, and Go libraries, **always keep the `v` prefix** on Git tags (e.g., `v1.2.3` or `subdir/v1.2.3` in monorepos).
+- When a Go service also builds a Docker container image, the Git tag retains `v1.0.0` for `go get` compatibility, while pipelines may strip `v` for Docker image tags (`:1.0.0`) if the project standardizes on un-prefixed image tags.
+
 ## Pre-releases and build metadata
 
 - Follow SemVer 2.0 directly for pre-release identifiers and metadata without introducing extra prefixes:
-  - Examples: `1.0.0-rc.1`, `1.0.0-beta.2`, `1.0.0-alpha.1`.
+  - Non-Go: `1.0.0-rc.1`, `1.0.0-beta.2`
+  - Go: `v1.0.0-rc.1`, `v1.0.0-beta.2`

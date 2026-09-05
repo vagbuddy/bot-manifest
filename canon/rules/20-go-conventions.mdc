@@ -11,3 +11,4 @@ alwaysApply: false
 - Follow **[Effective Go](https://go.dev/doc/effective_go)** and idioms already used in the module.
 - Use **`if err != nil { ... }`** (or equivalent explicit branches); avoid hidden or “magic” error swallowing, ignored errors, or opaque helpers that obscure control flow without team precedent.
 - When **adding or removing imports / modules**, run **`go mod tidy`** from the terminal and keep **`go.mod` / `go.sum`** consistent with the change.
+- **Module versioning and tags:** Always use the **`v` prefix for Git release tags** (`v1.0.0`, `v0.2.1`). The Go toolchain (`go.mod`, `go get`, Semantic Import Versioning) requires the `v` prefix for proper module resolution. This is an explicit exception to the general no-prefix rule in **`10-versioning-and-releases.mdc`**.
