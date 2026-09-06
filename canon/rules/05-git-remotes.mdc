@@ -1,0 +1,12 @@
+---
+description: >-
+  Do not git push (or force-push) unless the current user message explicitly
+  asks to push. Commit is not push. Prior confirmation does not carry over.
+alwaysApply: true
+---
+
+# Git remotes (canon)
+
+- Run `git push`, `git push --force`, `--force-with-lease`, or any other update of a remote branch only when **this** user message explicitly says to push.
+- A request to **commit**, stage, or “save” is not permission to push.
+- A “yes” from an earlier turn does not carry over. If the write would help but is not confirmed, say what you would push and wait.
