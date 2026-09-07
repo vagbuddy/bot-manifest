@@ -17,6 +17,7 @@ When you consume these packs from an **application** repository, you may add **`
 
 | Tool | How this repo maps |
 |------|---------------------|
+| **Gemini / Antigravity** | Root **`GEMINI.md`**; global rules mirror to `~/.gemini/config/rules/` or workspace `.agents/`. |
 | **Cursor** | Copy or import `.mdc` rules; copy `canon/skills/*` into `~/.cursor/skills/` if you want native skills. |
 | **GitHub Copilot** | Repository + IDE pick up **`.github/copilot-instructions.md`**; see also this file for agents. |
 | **Claude (Code / CLI)** | Root **`CLAUDE.md`** (this file’s sibling) describes how to apply `canon/` for Anthropic tooling. |
