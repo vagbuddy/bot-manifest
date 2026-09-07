@@ -1,12 +1,22 @@
 ---
 description: >-
-  Do not git push (or force-push) unless the current user message explicitly
-  asks to push. Commit is not push. Prior confirmation does not carry over.
+  Git safety and staging scope: push only on explicit command; stage and
+  commit only files directly relevant to the active task without sweeping
+  unrelated WIP files.
 alwaysApply: true
 ---
 
-# Git remotes (canon)
+# Git remotes and staging scope (canon)
+
+## 1. Remote operations (Zero-Trust)
 
 - Run `git push`, `git push --force`, `--force-with-lease`, or any other update of a remote branch only when **this** user message explicitly says to push.
 - A request to **commit**, stage, or “save” is not permission to push.
 - A “yes” from an earlier turn does not carry over. If the write would help but is not confirmed, say what you would push and wait.
+
+## 2. Commit and staging scope
+
+- **Strict task isolation:** Stage (`git add`) and commit **only** files directly created or modified as part of the active user request.
+- **Never sweep unrelated files:** Never run `git add .`, `git add -A`, or blindly include unrelated modified/untracked files in the workspace (draft documentation, notes, unfinished code in other modules).
+- **Unrelated files are WIP:** If unrelated modified or untracked files exist in the repository, leave them untouched in the working tree. Do not assume they belong in the commit, and do not invent separate "cleanup" commits for them without an explicit request.
+- **Clarify before touching:** If it is ambiguous whether a dirty file belongs to the task or is an uncommitted work-in-progress by the user, ask before staging it.
