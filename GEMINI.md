@@ -9,7 +9,7 @@ This repository is the canonical source of truth for **portable agent guidance**
 ### `canon/rules/` — Engineering and Safety Policies
 Living rules formatted as `.mdc` with YAML frontmatter. The markdown body represents authoritative policy:
 
-- **`00-architecture-and-security.mdc`** — Zero-trust baseline: zero tolerance for hardcoded secrets, injection prevention (parameterized queries only), XSS prevention (no `dangerouslySetInnerHTML`), IDOR/authorization checks, internal error masking, safe refactoring, and references to git push / staging rules.
+- **`00-architecture-and-security.mdc`** — Zero-trust baseline: zero tolerance for hardcoded secrets, injection prevention (parameterized queries only), XSS prevention (no `dangerouslySetInnerHTML`), IDOR/authorization checks, internal error masking, safe refactoring, references to git push / staging rules, and **mandatory reproducibility** (zero tolerance for ad-hoc manual state mutations against live databases or containers; all schema/data backfills must be version-controlled idempotent code).
 - **`00-user-locale.mdc`** — Resolution order for `userFacingLocale` (explicit chat override → `bot-manifest.locale.*` config → recent chat inference → fallback to `en`). Preserves identifiers and standard technical tokens in English.
 - **`01-dependencies-and-established-patterns.mdc`** — Check existing workspace patterns and abstractions before introducing new third-party libraries or frameworks.
 - **`05-git-remotes.mdc`** — Git safety & staging scope:

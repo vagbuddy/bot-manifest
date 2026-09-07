@@ -24,6 +24,7 @@ Living document: edit under `canon/rules/`. Dated folders under `YYYYMMDD/` are 
 - **Errors:** Never expose raw stack traces or internal details to end users.
 - **Git remotes:** `git push` and force-push only when **this** user message explicitly says to push. “Commit” is not push. A prior “yes” does not carry over. See **`05-git-remotes.mdc`**.
 - **Git staging scope:** Stage (`git add`) and commit only files directly relevant to the current task. Never bulk-stage or sweep unrelated dirty files or user WIP drafts into commits. See **`05-git-remotes.mdc`**.
+- **Reproducibility (Невоспроизводимость — зло):** Zero tolerance for ad-hoc manual mutations against live or production databases, containers, or environments (no `mongo --eval`, direct SQL/CLI one-offs, or ad-hoc exec scripts) to "make things work". All schema modifications, seeds, and data backfills MUST be written as version-controlled, idempotent code in the repository. If data must be configured through the UI or manually by the user, state it explicitly; never silently patch production state behind the scenes.
 
 ## Refactoring
 
