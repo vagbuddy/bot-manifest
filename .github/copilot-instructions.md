@@ -6,6 +6,19 @@ This repository holds **portable agent guidance** (markdown). When this workspac
 
 - Apply the **markdown body** of every `.mdc` file under `canon/rules/`.
 - YAML frontmatter is **metadata** (for example `description`, `alwaysApply`, `globs`). If `globs` is present and the active file matches, prioritize that rule; if `alwaysApply` is true, keep it in mind for the whole session.
+- **Core engineering & safety rules:**
+  - **`00-architecture-and-security.mdc`** — Zero-trust baseline: no hardcoded secrets, injection prevention (parameterized queries only), XSS prevention, IDOR checks, workspace isolation, mandatory reproducibility.
+  - **`00-user-locale.mdc`** — Language resolution (explicit chat override → `bot-manifest.locale.*` → inference → fallback to `en`). Identifiers stay English.
+  - **`01-dependencies-and-established-patterns.mdc`** — Respect existing workspace abstractions before adding new dependencies.
+  - **`02-code-simplicity.mdc`** — Fundamental engineering craft:
+    - *Subtraction over accretion:* simplify from first principles; do not patch bad patterns with defensive wrappers or fallback cascades.
+    - *Invariants over heuristics:* model reality explicitly; ban ad-hoc fuzzy matching and speculative fallback chains.
+    - *Single level of abstraction (SLAP):* strictly separate policy/orchestration, pure domain, and low-level mechanics/plumbing.
+    - *Mechanical sympathy:* respect runtime and database execution costs; single-pass queries, indexed lookups, no unread sorts or Frankenstein record merges.
+    - *Cognitive load & component size:* avoid monolithic classes (keep under 300 lines, strictly under 500 lines); decompose early upon growth.
+  - **`05-git-remotes.mdc`** — Git safety: push only on explicit user request in the current turn; stage and commit only relevant files.
+  - **`10-versioning-and-releases.mdc`** — SemVer release tags without `v` prefix (except Go modules).
+  - **`15-code-documentation.mdc`** — Preserve existing comments and docstrings.
 
 ## Persona (`canon/persona/**/*.mdc`)
 

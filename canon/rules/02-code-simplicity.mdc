@@ -1,0 +1,31 @@
+---
+description: Fundamental engineering craft: subtraction over accretion, domain invariants over heuristics, single level of abstraction, mechanical sympathy, and bounded cognitive load (classes under 300-500 LOC).
+alwaysApply: true
+---
+
+# Code craftsmanship and simplicity (canon)
+
+## 1. Subtraction over accretion (Упрощение вместо наслоения)
+- **Do not patch bad patterns:** When existing code is awkward, bloated, or incomplete, never fix it by adding defensive layers, flags, or fallback cascades on top.
+- **Simplify from first principles:** Stop and rethink the data flow. A correct solution usually deletes code and reduces conceptual complexity, rather than adding wrappers.
+
+## 2. Invariants over heuristics (Доменная модель вместо эвристик)
+- **Model reality, not guesses:** Every branch, query, and transformation must reflect an authentic invariant of the domain model.
+- **Ban ad-hoc heuristics:** Never use fuzzy string matching, arbitrary magic values, or speculative fallback ladders (`COALESCE` / `NULLIF` chains) to deduce business state. If a domain concept or status is needed, it must be modeled explicitly.
+
+## 3. Single level of abstraction (SLAP)
+- **Strictly separate concerns:** A function or class must operate at exactly one level of abstraction:
+  - *Orchestration / Policy:* Coordinates workflows; decides *when* and *what*.
+  - *Domain:* Expresses business rules and calculates facts; pure and decoupled from I/O.
+  - *Mechanics / Plumbing:* Handles serialization, raw database queries, HTTP, or byte manipulation.
+- **No plumbing in policy:** Low-level mechanics (type parsing, parameter mapping, string trimming) must never leak into orchestration or domain logic.
+
+## 4. Mechanical sympathy (Понимание цены исполнения)
+- **Respect the runtime:** Write code with an explicit mental model of how the underlying platform (database engine, runtime memory, thread pool) will execute it.
+- **Let the database do database work:** Never fetch full datasets into application memory to sort or filter what an indexed query (`LIMIT 1`) can do.
+- **No wasted work:** Never perform redundant operations out of defensive habit (e.g. unread sorts before inserts, multi-pass scans where one pass suffices).
+- **Deterministic state:** Mutations must be atomic and deterministic. Never merge incoming revisions with stale database state via defensive fallbacks into hybrid "Frankenstein" records.
+
+## 5. Cognitive load and size boundaries (Контроль когнитивной нагрузки)
+- **Bounded components:** Avoid monolithic classes and bloated files. Aim to keep classes under 300 lines; strictly avoid exceeding 500 lines.
+- **Decompose on growth:** Approaching or exceeding 300-500 lines is a clear signal of mixed responsibilities or leaked abstraction levels. Split early into focused collaborators, distinct domain concepts, or separate policy coordinators instead of accumulating complexity.
