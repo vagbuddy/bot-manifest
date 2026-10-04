@@ -66,3 +66,11 @@ When working with Google Gemini CLI, Antigravity IDE, or Gemini agents:
 - **`AGENTS.md`** — Universal human- and agent-readable repo summary.
 - **`CLAUDE.md`** — Loading instructions for Claude Code / CLI.
 - **`.github/copilot-instructions.md`** — Instructions for GitHub Copilot.
+
+---
+
+## 4. Execution & Network Boundaries (Gemini & Antigravity Only)
+
+- **No unauthorized network/port probing:** Never perform network scanning, port probing (`Test-NetConnection`, `nc`, `nmap`, ping sweeps), DNS probing, or arbitrary remote host / SSH exploration unless explicitly requested by the user in this specific turn.
+- **Local workspace scope only:** Shell commands are strictly restricted to local repository inspection, development, and building (e.g. pytest, git status/diff, npm build, local unit tests).
+- **Immediate stop on missing service:** If a command or script fails because an external, remote, or containerized service (database, docker, cluster) is unreachable locally, **immediately stop**. Do not attempt to find alternative network routes or scan the LAN/WAN. State the failure clearly and output the query/command for the user, or ask how to proceed.
