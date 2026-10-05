@@ -7,7 +7,7 @@ This repository holds **portable agent guidance** (markdown). When this workspac
 - Apply the **markdown body** of every `.mdc` file under `canon/rules/`.
 - YAML frontmatter is **metadata** (for example `description`, `alwaysApply`, `globs`). If `globs` is present and the active file matches, prioritize that rule; if `alwaysApply` is true, keep it in mind for the whole session.
 - **Core engineering & safety rules:**
-  - **`00-architecture-and-security.mdc`** — Zero-trust baseline: no hardcoded secrets, injection prevention (parameterized queries only), XSS prevention, IDOR checks, workspace isolation, mandatory reproducibility.
+  - **`00-architecture-and-security.mdc`** — Zero-trust baseline: no hardcoded secrets, injection prevention (parameterized queries only), XSS prevention, IDOR checks, workspace isolation, mandatory reproducibility, and pre-exposure security & protocol boundaries (mandatory warning and local admin setup prior to exposing services via tunnels or proxies).
   - **`00-user-locale.mdc`** — Language resolution (explicit chat override → `bot-manifest.locale.*` → inference → fallback to `en`). Identifiers stay English.
   - **`01-dependencies-and-established-patterns.mdc`** — Respect existing workspace abstractions before adding new dependencies.
   - **`02-code-simplicity.mdc`** — Fundamental engineering craft:
