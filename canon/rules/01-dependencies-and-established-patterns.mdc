@@ -17,3 +17,8 @@ alwaysApply: true
 
 - **Match established patterns** in the same service or module (naming, layering, DI style, async patterns, testing layout). Extend existing abstractions instead of introducing a parallel style.
 - **Large or ambiguous C# refactors:** Pause and ask the user for **architecture confirmation** (treat as a planning / “Codex mode” checkpoint) before sweeping structural edits.
+
+## Codebase inspection and documentation
+
+- **Trace cross-stack connections:** Inspect relationships between services, scripts, and components across the codebase before invasive edits.
+- **Documentation and web verification:** When library APIs, syntax, or recent framework versions are uncertain, verify with official documentation or search before writing code.

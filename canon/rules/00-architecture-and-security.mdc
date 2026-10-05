@@ -29,8 +29,11 @@ Living document: edit under `canon/rules/`. Dated folders under `YYYYMMDD/` are 
 - **Pre-exposure security & protocol boundaries (Предупреждение ДО экспозиции):** Never expose or instruct the operator to expose a service to the public internet (via Cloudflare Tunnels, reverse proxy rules, port forwards, or public DNS) without explicitly stating the security posture and exposure scope **BEFORE** the exposure step is executed:
   1. *Unauthenticated setup wizards:* If a service initializes with an unauthenticated setup wizard, default credentials, or initial admin creation form (e.g. `/setup`), warn the operator and require completing initial admin setup locally (or provisioning credentials via config/environment) **before** routing public traffic to it. Publishing an uninitialized setup page to the internet is an immediate takeover vulnerability.
   2. *Protocol and perimeter transparency:* Explicitly state in advance what will and will not be accessible from the internet (e.g. "Web UI is exposed over HTTPS via the tunnel, but native TCP/SSH/SFTP protocols remain internal to LAN/VPN"). Never leave the operator to discover security caveats or protocol limitations after public routing is already active.
+- **Post-generation security audit:** After substantive code generation or editing security-sensitive paths, perform a focused security check (OWASP Top 10: injection, broken access control, XSS, sensitive data exposure, misconfiguration). Fix obvious issues in-tree and flag residual risk.
 
-## Refactoring
+## Refactoring and verification
 
 - Before large refactors, analyze **cross-language impact** (for example, how a Go API change affects a React client).
 - For large diffs, use a **dry run**: explain the plan and risks before applying sweeping edits.
+- **Build and test validation:** Run relevant build/test commands (`go test`, `go mod tidy`, `pytest`, `npm run build`) whenever they validate the change. Fix failures until passing within task scope; escalate if failure is environmental.
+- **Database schema precision:** When querying, migrating, or changing persistence code, inspect live schemas or migration files. Match exact table and column names and types — never invent schema structures.

@@ -9,33 +9,21 @@ This repository is the canonical source of truth for **portable agent guidance**
 ### `canon/rules/` — Engineering and Safety Policies
 Living rules formatted as `.mdc` with YAML frontmatter. The markdown body represents authoritative policy:
 
-- **`00-architecture-and-security.mdc`** — Zero-trust baseline: zero tolerance for hardcoded secrets, injection prevention (parameterized queries only), XSS prevention (no `dangerouslySetInnerHTML`), IDOR/authorization checks, internal error masking, safe refactoring, **workspace scope & IDE context isolation** (strictly operate within active project root; ignore background tabs/editor metadata from other projects unless explicitly requested), references to git push / staging rules, **mandatory reproducibility** (zero tolerance for ad-hoc manual state mutations against live databases or containers; all schema/data backfills must be version-controlled idempotent code), and **pre-exposure security & protocol boundaries** (mandatory warning and local admin setup prior to public routing; perimeter and protocol transparency).
-- **`00-user-locale.mdc`** — Resolution order for `userFacingLocale` (explicit chat override → `bot-manifest.locale.*` config → recent chat inference → fallback to `en`). Preserves identifiers and standard technical tokens in English.
-- **`01-dependencies-and-established-patterns.mdc`** — Check existing workspace patterns and abstractions before introducing new third-party libraries or frameworks.
-- **`02-code-simplicity.mdc`** — Fundamental engineering craft: subtraction over accretion (do not patch bad patterns; simplify from first principles), domain invariants over heuristics (ban ad-hoc fuzzy matching or speculative fallback ladders), single level of abstraction (SLAP: strict separation of policy, domain, and mechanics), mechanical sympathy (respect the execution cost of the underlying platform and database), and bounded cognitive load (classes under 300-500 LOC; decompose early upon growth).
-- **`05-git-remotes.mdc`** — Git safety & staging scope:
-  - **Remotes (Zero-Trust):** Execute `git push`, force-push, or remote branch updates **only** when the current user turn explicitly requests it. "Commit", "save", or prior turn confirmations never carry over.
-  - **Commit & staging scope:** Stage (`git add`) and commit **only** files directly relevant to the active user request. Never bulk-sweep unrelated dirty files (`git add .`). Unrelated modified or untracked files are treated as user work-in-progress (WIP) and left untouched in the working tree.
-- **`10-versioning-and-releases.mdc`** — SemVer 2.0 release tags without `v` prefix (e.g. `1.0.4`, not `v1.0.4`). Mandatory `v` prefix exception applies **only** to Go modules (`vX.Y.Z`).
-- **`15-code-documentation.mdc`** — Documentation integrity: preserve existing comments and docstrings.
-- **`20-go-conventions.mdc`** — Go standards: explicit error handling, table-driven tests.
-- **`20-python-conventions.mdc`** — Modern Python standards, typing, clean modular structure.
-- **`20-react-typescript-conventions.mdc`** — Modern React: functional components, strict TypeScript, no `any`, modern hook patterns.
+- `00-architecture-and-security.mdc` — Zero-trust baseline, security boundaries, reproducibility, build/test verification.
+- `00-user-locale.mdc` — User-facing locale resolution; identifiers stay English.
+- `01-dependencies-and-established-patterns.mdc` — Existing abstractions, manifests, codebase inspection, documentation.
+- `02-code-simplicity.mdc` — Subtraction over accretion, domain invariants, SLAP, mechanical sympathy.
+- `05-git-remotes.mdc` — Push only on explicit turn instruction; staging scope.
+- `10-versioning-and-releases.mdc` — SemVer release tags without `v` prefix (except Go).
+- `15-code-documentation.mdc` — Documentation integrity and preservation.
+- `20-*-conventions.mdc` — Go, Python, React/TypeScript standards.
 
 ### `canon/persona/` — Communication Style
-- **`00-voice-clear.mdc`** — Tone and structure axes:
-  - **Concise:** Brief, dense, direct answers first; no filler or repetitive caveats.
-  - **Logical:** Calm, analytical, professional, empathetic to developer context.
-  - **Adaptive:** Match the user's technical register and density.
+- `00-voice-clear.mdc` — Tone and structure (Concise / Logical / Adaptive).
 
 ### `canon/skills/` — Procedural Workflows
-Self-contained skills (`SKILL.md`) for specialized execution workflows:
-- **`codebase-indexing`** — Repository structure and symbol mapping.
-- **`database-schema`** — Database migrations and schema inspection.
-- **`documentation-web`** — Technical documentation workflows.
-- **`hybrid-stack-verification`** — Cross-stack verification between backend and frontend.
-- **`security-audit`** — Vulnerability scanning and credential checks.
-- **`terminal-execution`** — Safe shell command execution and process management.
+Self-contained skills (`SKILL.md`) for multi-step execution workflows:
+- `hybrid-stack-verification` — Cross-stack verification between backend contracts and frontend clients.
 
 ### Dated Snapshots (`YYYYMMDD/`)
 Frozen snapshots (e.g. `20260422/`) for projects requiring pinned, immutable rule packs.

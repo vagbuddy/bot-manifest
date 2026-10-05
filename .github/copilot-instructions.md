@@ -7,18 +7,14 @@ This repository holds **portable agent guidance** (markdown). When this workspac
 - Apply the **markdown body** of every `.mdc` file under `canon/rules/`.
 - YAML frontmatter is **metadata** (for example `description`, `alwaysApply`, `globs`). If `globs` is present and the active file matches, prioritize that rule; if `alwaysApply` is true, keep it in mind for the whole session.
 - **Core engineering & safety rules:**
-  - **`00-architecture-and-security.mdc`** — Zero-trust baseline: no hardcoded secrets, injection prevention (parameterized queries only), XSS prevention, IDOR checks, workspace isolation, mandatory reproducibility, and pre-exposure security & protocol boundaries (mandatory warning and local admin setup prior to exposing services via tunnels or proxies).
-  - **`00-user-locale.mdc`** — Language resolution (explicit chat override → `bot-manifest.locale.*` → inference → fallback to `en`). Identifiers stay English.
-  - **`01-dependencies-and-established-patterns.mdc`** — Respect existing workspace abstractions before adding new dependencies.
-  - **`02-code-simplicity.mdc`** — Fundamental engineering craft:
-    - *Subtraction over accretion:* simplify from first principles; do not patch bad patterns with defensive wrappers or fallback cascades.
-    - *Invariants over heuristics:* model reality explicitly; ban ad-hoc fuzzy matching and speculative fallback chains.
-    - *Single level of abstraction (SLAP):* strictly separate policy/orchestration, pure domain, and low-level mechanics/plumbing.
-    - *Mechanical sympathy:* respect runtime and database execution costs; single-pass queries, indexed lookups, no unread sorts or Frankenstein record merges.
-    - *Cognitive load & component size:* avoid monolithic classes (keep under 300 lines, strictly under 500 lines); decompose early upon growth.
-  - **`05-git-remotes.mdc`** — Git safety: push only on explicit user request in the current turn; stage and commit only relevant files.
-  - **`10-versioning-and-releases.mdc`** — SemVer release tags without `v` prefix (except Go modules).
-  - **`15-code-documentation.mdc`** — Preserve existing comments and docstrings.
+  - `00-architecture-and-security.mdc` — Zero-trust baseline, security boundaries, reproducibility, build/test verification.
+  - `00-user-locale.mdc` — Language resolution (chat override → `bot-manifest.locale.*` → inference → fallback to `en`). Identifiers stay English.
+  - `01-dependencies-and-established-patterns.mdc` — Respect existing workspace abstractions, codebase inspection, documentation verification.
+  - `02-code-simplicity.mdc` — Subtraction over accretion, domain invariants, SLAP, mechanical sympathy, cognitive load limits.
+  - `05-git-remotes.mdc` — Push only on explicit turn request; stage only relevant files.
+  - `10-versioning-and-releases.mdc` — SemVer release tags without `v` prefix (except Go modules).
+  - `15-code-documentation.mdc` — Preserve existing comments and docstrings.
+  - Stack conventions: `20-go-conventions.mdc`, `20-python-conventions.mdc`, `20-react-typescript-conventions.mdc`.
 
 ## Persona (`canon/persona/**/*.mdc`)
 
@@ -26,8 +22,7 @@ This repository holds **portable agent guidance** (markdown). When this workspac
 
 ## Skills (`canon/skills/**/SKILL.md`)
 
-- Each directory is one skill. Read `SKILL.md` when the user’s request matches the skill’s `description` in frontmatter.
-- Skills describe **how to execute** a workflow (terminal, indexing, DB, docs, audit); they do not replace security or architecture rules.
+- Multi-step procedural workflows (e.g. `hybrid-stack-verification`). Read `SKILL.md` when the user’s request matches the skill’s `description` in frontmatter.
 
 ## Dated snapshots
 
