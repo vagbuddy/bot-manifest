@@ -23,6 +23,7 @@ Living rules formatted as `.mdc` with YAML frontmatter. The markdown body repres
 
 ### `canon/skills/` — Procedural Workflows
 Self-contained skills (`SKILL.md`) for multi-step execution workflows:
+- `deep-task` — First-principles task deepening and prompt refinement (depth over breadth).
 - `hybrid-stack-verification` — Cross-stack verification between backend contracts and frontend clients.
 
 ### Dated Snapshots (`YYYYMMDD/`)

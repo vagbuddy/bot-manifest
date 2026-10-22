@@ -14,7 +14,7 @@ This repository stores **portable** agent guidance: rules (`.mdc`), persona (`.m
    - `15-code-documentation.mdc` — Documentation integrity and preservation.
    - `20-*-conventions.mdc` — Go, Python, React/TypeScript conventions.
 2. **`canon/persona/**/*.mdc`** — Communication style (Concise / Logical / Adaptive).
-3. **`canon/skills/<name>/SKILL.md`** — Multi-step procedural workflows (e.g. `hybrid-stack-verification`). Follow when the task matches skill frontmatter description.
+3. **`canon/skills/<name>/SKILL.md`** — Multi-step procedural workflows (e.g. `deep-task`, `hybrid-stack-verification`). Follow when the task matches skill frontmatter description.
 4. **`YYYYMMDD/rules/**`** — Optional frozen snapshot packs; use only when explicitly requested.
 
 ## Locale

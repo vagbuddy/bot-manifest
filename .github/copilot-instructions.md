@@ -22,7 +22,7 @@ This repository holds **portable agent guidance** (markdown). When this workspac
 
 ## Skills (`canon/skills/**/SKILL.md`)
 
-- Multi-step procedural workflows (e.g. `hybrid-stack-verification`). Read `SKILL.md` when the user’s request matches the skill’s `description` in frontmatter.
+- Multi-step procedural workflows (e.g. `deep-task`, `hybrid-stack-verification`). Read `SKILL.md` when the user’s request matches the skill’s `description` in frontmatter.
 
 ## Dated snapshots
 
